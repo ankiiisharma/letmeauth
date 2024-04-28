@@ -5,7 +5,7 @@ This repository contains a MERN CRUD application that allows users to register a
 ### Techstack used
 
 <p align="center">
-    <img src="https://skillicons.dev/icons?i=React,MongoDb,Express,NodeJs,npm,jwt,bcrypt" />
+    <img src="https://skillicons.dev/icons?i=react,mongodb,express,nodejs,npm" />
   </a>
 </p>
 
@@ -77,6 +77,7 @@ The server will run on http://localhost:8000.
 - For the backend to function properly, you will need to set up a few environment variables:
 
 `MONGODB_URI:` The connection string to your MongoDB database.
+
 `JWT_SECRET:` A secret key for encoding and decoding JWT tokens.
 These variables can be set in a .env file in the server/ directory.
 
