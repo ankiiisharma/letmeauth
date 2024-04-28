@@ -1,12 +1,10 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
-const { mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-
-//mdb connection
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -14,19 +12,28 @@ mongoose
     console.log("DB connected!");
   })
   .catch((err) => {
-    console.log("error while connecting db:" + err);
+    console.log("Error while connecting to the database:", err);
   });
 
-//middlewares
+app.use(
+  cors({
+    credentials: true,
+    origin: [
+      "http://localhost:5173",
+      "https://letmeauth-server.vercel.app",
+      "https://letmeauth-frontend.vercel.app",
+    ],
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 app.use("/", require("./Routes/authentication"));
 
 app.listen(port, () => {
-  console.log(`server is listening at ${port}`);
+  console.log(`Server is listening at ${port}`);
 });
