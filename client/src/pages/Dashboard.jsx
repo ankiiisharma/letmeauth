@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 
 function Dashboard() {
@@ -6,13 +6,9 @@ function Dashboard() {
 
   return (
     <>
-      {/* <h1> Dashboard </h1> */}
-      {!!user && (
-        <>
-          <h2> heya, {user.name}! </h2>
-          <h4> this page is underconstruction... </h4>
-        </>
-      )}
+      <h3>Hello {user.name}, welcome here!</h3>
+
+      <h5>This is currently under construction, see you soon.</h5>
     </>
   );
 }
