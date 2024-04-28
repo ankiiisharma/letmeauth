@@ -5,11 +5,19 @@ function Dashboard() {
   const { user } = useContext(UserContext);
 
   return (
-    <>
-      <h3>Hello {user.name}, welcome here!</h3>
-
-      <h5>This is currently under construction, see you soon.</h5>
-    </>
+    <div>
+      {user ? (
+        <div>
+          <h3>Hello {user.name}, welcome here!</h3>
+          <h5>This is currently under construction, see you soon.</h5>
+        </div>
+      ) : (
+        <div>
+          <h3>Hello User, welcome here!</h3>
+          <h5>This is currently under construction, see you soon.</h5>
+        </div>
+      )}
+    </div>
   );
 }
 
