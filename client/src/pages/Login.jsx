@@ -7,23 +7,25 @@ function Login() {
   const navigate = useNavigate();
 
   const [data, setData] = useState({
-    name: "",
     email: "",
+    password: "",
   });
 
   const loginUser = async (e) => {
     e.preventDefault();
     const { email, password } = data;
     try {
-      const { data } = await axios.post("/login", { email, password });
-      if (data.error) {
-        toast.error(data.error);
+      const response = await axios.post("/login", { email, password });
+      const responseData = response.data;
+      if (responseData.error) {
+        toast.error(responseData.error);
       } else {
-        setData({});
+        setData({ ...data, password: "" });
+
         navigate("/dashboard");
       }
     } catch (error) {
-      console.log(error);
+      console.error("Login error:", error);
     }
   };
 
@@ -44,7 +46,7 @@ function Login() {
           value={data.password}
           onChange={(e) => setData({ ...data, password: e.target.value })}
         />
-        <button type="submit">submit</button>
+        <button type="submit">Submit</button>
       </form>
     </>
   );
