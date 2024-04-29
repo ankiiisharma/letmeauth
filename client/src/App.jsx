@@ -17,16 +17,18 @@ import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <UserContextProvider>
-      <Navbar />
-      <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </UserContextProvider>
+    <div className="gradient-background">
+      <UserContextProvider>
+        <Navbar />
+        <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </UserContextProvider>
+    </div>
   );
 }
 
